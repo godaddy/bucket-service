@@ -1,0 +1,6 @@
+{
+  "extends": "godaddy",
+  "parserOptions": {
+    "ecmaVersion": 2017
+  }
+}

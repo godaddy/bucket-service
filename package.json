@@ -1,0 +1,45 @@
+{
+  "name": "bucket-service",
+  "version": "1.0.0",
+  "description": "Add buckets to tests to easily run subsets of tests.",
+  "main": "./lib/index.js",
+  "dependencies": {
+    "body-parser": "^1.12.2",
+    "bson": "^0.4.23",
+    "cors": "^2.8.3",
+    "escape-string-regexp": "1.0.5",
+    "express": "^4.12.3",
+    "lodash": "^4.17.11",
+    "mongo-sanitize": "^1.0.1",
+    "mongoose": "^5.2.9",
+    "swagger-jsdoc": "^1.9.6",
+    "swagger-ui-express": "^2.0.2"
+  },
+  "devDependencies": {
+    "axios": "^0.18.0",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "babel-loader": "^7.1.5",
+    "@babel/node": "^7.2.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.3.4",
+    "eslint": "^5.14.1",
+    "eslint-config-godaddy": "^3.0.0",
+    "eslint-plugin-json": "^1.4.0",
+    "eslint-plugin-mocha": "^5.3.0",
+    "mocha": "^5.2.0",
+    "mockgoose": "^8.0.1",
+    "nodemon": "^1.18.10",
+    "nyc": "^13.3.0"
+  },
+  "scripts": {
+    "cicd-build": "babel index.js --out-file index.js && babel lib --out-dir lib",
+    "eslint": "eslint -c .eslintrc lib test",
+    "test": "NODE_ENV=dev nyc mocha --timeout 120000 --exit --require @babel/polyfill --require @babel/register test/unit/**/*.js",
+    "integration": "NODE_ENV=dev nyc mocha --timeout 120000 --exit --require @babel/polyfill --require @babel/register test/integration/**/*.js",
+    "start": "nodemon --exec babel-node lib/index.js"
+  },
+  "author": "GoDaddy Operating Company, LLC",
+  "license": "MIT"
+}
