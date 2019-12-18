@@ -1,8 +1,8 @@
-import axios from 'axios';
-import TestModel from '../../lib/models/test';
-import mongoose from 'mongoose';
-import assert from 'assert';
-import { ObjectID } from 'mongodb';
+const axios = require('axios');
+const TestModel = require('../../lib/models/test');
+const mongoose = require('mongoose');
+const assert = require('assert');
+const ObjectID = require('mongodb').ObjectID;
 
 describe('Test Service', () => {
   let testUuid;
@@ -24,7 +24,14 @@ describe('Test Service', () => {
     const host = process.env.BUCKET_MONGOHOST || 'localhost'; // eslint-disable-line no-process-env
     const db = process.env.BUCKET_MONGODB || 'test'; // eslint-disable-line no-process-env
     const mongoDbUrl = `mongodb://${host}/${db}`;
-    await mongoose.connect(mongoDbUrl, { useNewUrlParser: true });
+    await mongoose.connect(
+      mongoDbUrl,
+      {
+        useNewUrlParser: true,
+        reconnectTries: Number.MAX_VALUE,
+        useUnifiedTopology: true
+      }
+    );
 
     rootUrl = `http://localhost:8080/projects/${testProject}/tests`;
   });

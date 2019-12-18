@@ -1,5 +1,8 @@
-import assert from 'assert';
-import { getDifference, extractTags, filterTags, getObjForTag } from '../../lib/utils';
+const assert = require('assert');
+const getDifference = require('../../lib/utils').getDifference;
+const extractTags = require('../../lib/utils').extractTags;
+const filterTags = require('../../lib/utils').filterTags;
+const getObjForTag = require('../../lib/utils').getObjForTag;
 
 describe('Utils', () => {
 

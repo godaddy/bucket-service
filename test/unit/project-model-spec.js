@@ -1,6 +1,6 @@
-import testApi from '../../lib/routes/project';
-import assert from 'assert';
-import { isValidProjectRecord } from '../../lib/routes/project';
+const testApi = require('../../lib/routes/project');
+const assert = require('assert');
+const isValidProjectRecord = require('../../lib/routes/project').isValidProjectRecord;
 
 describe('Project Model', () => {
   let testProject;
