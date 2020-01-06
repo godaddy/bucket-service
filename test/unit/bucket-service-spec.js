@@ -1,6 +1,6 @@
-import testApi from '../../lib/routes/test';
-import assert from 'assert';
-import { isValidTestRecord } from '../../lib/routes/test';
+const testApi = require('../../lib/routes/test');
+const assert = require('assert');
+const isValidTestRecord = require('../../lib/routes/test').isValidTestRecord;
 
 describe('Test Service', () => {
   let testUuid;
